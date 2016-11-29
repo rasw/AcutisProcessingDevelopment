@@ -89,7 +89,6 @@ namespace AcutisProcessingDevelopment
             {
                 // log the error in service log
             }
-
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Await.Warning", "CS4014:Await.Warning")]
@@ -126,6 +125,24 @@ namespace AcutisProcessingDevelopment
         private void timer1_Tick_1(object sender, EventArgs e)
         {
            ProcessFiles();
+        }
+
+        private async void btnTestUploadToIS_Click(object sender, EventArgs e)
+        {
+           // 2016-11-29T09:22:06.669650Z  format   /// DateTime.UtcNow.ToString("o")
+
+            Random r = new Random();
+            double number = r.NextDouble();
+
+            Dictionary<string, string> dataParams = new Dictionary<string, string>();
+
+            string formattedValue = String.Format("{0:0.00}", Convert.ToDouble(number * 100));       // format to 2 decimal places (does round up 20.94)
+
+            dataParams.Add(Path.GetFileNameWithoutExtension("TestParamName"), formattedValue);         // if upload to ISD is enabled then async upload the data
+            await SendMessageToIS(dataParams, "", "");
+
+            MessageBox.Show(DateTime.UtcNow.ToString("o"));
+
         }
     }
 }
