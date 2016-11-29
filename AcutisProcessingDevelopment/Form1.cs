@@ -78,7 +78,7 @@ namespace AcutisProcessingDevelopment
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                    // log error to event log
                 }
