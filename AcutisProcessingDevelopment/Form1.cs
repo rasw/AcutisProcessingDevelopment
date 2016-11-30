@@ -19,6 +19,7 @@ namespace AcutisProcessingDevelopment
         string processedTargetFolder = @"C:\ACData\AC_Synchronised_Export_Data";
         string originalFilesFolder = @"C:\ACData";           // appSet.getValue("DataFolderPath");
         string configurationFolder = @"C:\ACData\Configuration";
+        int ProcessCounter = 0;
 
         Dictionary<string, DateTime> lastWriteTimes = new Dictionary<string, DateTime>();
 
@@ -71,6 +72,9 @@ namespace AcutisProcessingDevelopment
                             {
                                 await SendMessageToIS(dataParams,ak,bk);
                             }
+
+                            ProcessCounter++;
+                            lblProcessCount.Text = "Process Count: " + ProcessCounter.ToString();
                         }
                         else
                         {
@@ -80,14 +84,14 @@ namespace AcutisProcessingDevelopment
                 }
                 catch (Exception)
                 {
-                   // log error to event log
+                    throw;  // log error to event log
                 }
 
                 //dataParams.Clear(); // clear the dictionary
             }
             catch (Exception)
             {
-                // log the error in service log
+                throw; // log the error in service log
             }
         }
 
@@ -97,8 +101,8 @@ namespace AcutisProcessingDevelopment
             using (var client = new HttpClient())
             {
                 var content = new FormUrlEncodedContent(dataParams);
-                var response = await client.PostAsync("https://groker.initialstate.com/api/events?accessKey=V4iVTL0C9Mh5m5gMPP7XLwwF4y3mouYI&bucketKey=JWRCPRMBGJRW", content);  // DEV Bucket
-                //var response = await client.PostAsync("https://groker.initialstate.com/api/events?accessKey=" + AK + "&bucketKey=" + BK, content);
+                //var response = await client.PostAsync("https://groker.initialstate.com/api/events?accessKey=V4iVTL0C9Mh5m5gMPP7XLwwF4y3mouYI&bucketKey=JWRCPRMBGJRW", content);  // DEV Bucket
+                var response = await client.PostAsync("https://groker.initialstate.com/api/events?accessKey=" + AK + "&bucketKey=" + BK, content);
                 var responseString = await response.Content.ReadAsStringAsync();
             }
         }
