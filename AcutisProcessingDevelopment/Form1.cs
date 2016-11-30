@@ -26,6 +26,7 @@ namespace AcutisProcessingDevelopment
         private void Form1_Load(object sender, EventArgs e)
         {
             CheckFolderStructure();
+            lblProcessCount.Text = "- - -";
         }
 
         async void ProcessFiles()
