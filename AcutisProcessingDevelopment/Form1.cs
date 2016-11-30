@@ -63,7 +63,7 @@ namespace AcutisProcessingDevelopment
                                 using (StreamWriter sw = File.AppendText(Path.Combine(processedTargetFolder, Path.GetFileName(file))))
                                 {
                                     string formattedValue = String.Format("{0:0.00}", Convert.ToDouble(data[1]));       // format to 2 decimal places (does round up 20.94)
-                                    sw.WriteLine(dateNow + "|" + formattedValue);
+                                    sw.WriteLine(dateNow + "|" + formattedValue);                                       // Write the structured line to file
 
                                     if (uploadToIS)
                                         dataParams.Add(Path.GetFileNameWithoutExtension(file), formattedValue);         // if upload to ISD is enabled then async upload the data
@@ -137,7 +137,7 @@ namespace AcutisProcessingDevelopment
             }
             catch (Exception)
             {
-                Dispose();
+                Dispose();          // if there is a folder creation issue then just quit the application
             }
         }
 
