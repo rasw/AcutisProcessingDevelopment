@@ -31,14 +31,13 @@
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
-            this.btnTestUploadToIS = new System.Windows.Forms.Button();
             this.lblProcessCount = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 300000;
+            this.timer1.Interval = 420000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
             // button1
@@ -51,19 +50,9 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnTestUploadToIS
-            // 
-            this.btnTestUploadToIS.Location = new System.Drawing.Point(6, 43);
-            this.btnTestUploadToIS.Name = "btnTestUploadToIS";
-            this.btnTestUploadToIS.Size = new System.Drawing.Size(164, 31);
-            this.btnTestUploadToIS.TabIndex = 1;
-            this.btnTestUploadToIS.Text = "Test Upload";
-            this.btnTestUploadToIS.UseVisualStyleBackColor = true;
-            this.btnTestUploadToIS.Click += new System.EventHandler(this.btnTestUploadToIS_Click);
-            // 
             // lblProcessCount
             // 
-            this.lblProcessCount.Location = new System.Drawing.Point(12, 80);
+            this.lblProcessCount.Location = new System.Drawing.Point(12, 40);
             this.lblProcessCount.Name = "lblProcessCount";
             this.lblProcessCount.Size = new System.Drawing.Size(154, 23);
             this.lblProcessCount.TabIndex = 2;
@@ -74,10 +63,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(178, 112);
+            this.ClientSize = new System.Drawing.Size(178, 67);
             this.Controls.Add(this.lblProcessCount);
-            this.Controls.Add(this.btnTestUploadToIS);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "ACUTIS..";
@@ -90,7 +79,6 @@
 
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnTestUploadToIS;
         private System.Windows.Forms.Label lblProcessCount;
     }
 }
